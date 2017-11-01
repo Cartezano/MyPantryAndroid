@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">My Pantry</string>
+    <string name="title_activity_pantry">My Pantry</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Sign in</string>
+    <string name="title_activity_add_product">Add Product</string>
+
+
+    <!-- Strings related to login and register -->
+    <string name="input_email">Email</string>
+    <string name="input_name">Name</string>
+    <string name="input_last_name">Last Name</string>
+    <string name="input_password">Password</string>
+    <string name="input_repeat_password">Repeat Password</string>
+    <string name="check_remember_me">Remember me?</string>
+    <string name="action_login">Login</string>
+    <string name="action_sign_in">Sign in</string>
+
+
+    <!-- Strings related to menu -->
+    <string name="menu_home">Home</string>
+    <string name="menu_pantry">My Pantry</string>
+    <string name="menu_add_product">Add Product</string>
+    <string name="menu_remove_product">Remove Product</string>
+    <string name="menu_cart">Shopping Cart</string>
+
+    <string name="other_options">Other Options</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_feedback">Feedback</string>
+
+
+    <!-- Strings related to add or remove product -->
+    <string name="input_code">Code</string>
+    <string name="input_product_name">Product Name</string>
+    <string name="input_brand">Brand</string>
+    <string name="input_quality">Quality</string>
+    <string name="input_dear_date">Dear Date</string>
+    <string name="input_expiration_date">Expiration Date</string>
+    <string name="action_add_product">Add Product</string>
+
+
+    <!-- String related to scan camera -->
+    <string name="scan_message">Por favor, acerqué el código de barra.</string>
+    <string name="scan_close">La camara ha sido cerrada.</string>
+
+    <string name="hello_blank_fragment">Hello world</string>
+
+    <!-- Strings related to error message -->
+    <string name="error_email_valid">Email is not valid, please try again.</string>
+    <string name="error_password_valid">Password is not valid, 6 characters or more, please try again.</string>
+</resources>

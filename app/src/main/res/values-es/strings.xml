@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">My Pantry</string>
+    <string name="title_activity_pantry">My Pantry</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
+    <string name="title_activity_register">Registarse</string>
+    <string name="title_activity_add_product">Agregar Producto</string>
+
+
+    <!-- Strings related to login and register -->
+    <string name="prompt_email">Correo Electrónico</string>
+    <string name="prompt_name">Nombre</string>
+    <string name="prompt_last_name">Apellido</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_repeat_password">Repetir Contraseña</string>
+    <string name="check_remember_me">¿Recordar?</string>
+    <string name="action_login">Iniciar Sesión</string>
+    <string name="action_sign_in">Registrarse</string>
+
+
+    <!-- Strings related to menu -->
+    <string name="menu_home">Inicio</string>
+    <string name="menu_pantry">Mi Despensa</string>
+    <string name="menu_add_product">Agregar Product</string>
+    <string name="menu_remove_product">Eliminar Producto</string>
+    <string name="menu_cart">Carro de Compras</string>
+
+    <string name="other_options">Otras Opciones</string>
+    <string name="menu_share">Compartir</string>
+    <string name="menu_feedback">Feedback</string>
+
+
+    <!-- Strings related to product -->
+    <string name="input_code">Código</string>
+    <string name="input_product_name">Nombre del Producto</string>
+    <string name="input_brand">Marca</string>
+    <string name="input_quality">Cantidad</string>
+    <string name="input_expiration_date">Fecha de Expiración</string>
+    <string name="action_add_product">Agregar Producto</string>
+
+
+    <!-- String related to scan camera -->
+    <string name="scan_message">Por favor, acerqué el código de barra.</string>
+    <string name="scan_close">La camara ha sido cerrada.</string>
+
+    <string name="hello_blank_fragment">Hello world</string>
+</resources>
