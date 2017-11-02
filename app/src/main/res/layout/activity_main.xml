@@ -17,11 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/buttonSignIn"
-            android:background="@color/colorAccent"
-            android:textColor="@color/colorIcons"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:text="@string/action_login" />
+            android:background="@color/colorAccent"
+            android:text="@string/action_login"
+            android:textColor="@color/colorIcons" />
 
         <Button
             android:id="@+id/buttonSignIn"
@@ -30,7 +30,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:text="@string/action_sign_in" />
+            android:text="@string/action_sign_up" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

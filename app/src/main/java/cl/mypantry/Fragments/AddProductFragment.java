@@ -1,5 +1,6 @@
 package cl.mypantry.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import cl.mypantry.Activities.PantryActivity;
 import cl.mypantry.R;
 
 public class AddProductFragment extends Fragment {
@@ -66,6 +68,7 @@ public class AddProductFragment extends Fragment {
 
         if (result.getContents() == null) {
             Toast.makeText(this.getActivity(), this.getString(R.string.scan_close), Toast.LENGTH_LONG).show();
+            redirectActivity(getActivity());
         } else {
             Toast.makeText(this.getActivity(), result.getContents(), Toast.LENGTH_LONG).show();
             txtBarcode.setText(barcode);
@@ -81,5 +84,10 @@ public class AddProductFragment extends Fragment {
         integrator.setBarcodeImageEnabled(false);
         integrator.setOrientationLocked(false);
         integrator.initiateScan();
+    }
+
+    public void redirectActivity(Activity activity) {
+        Intent intent = new Intent(activity, PantryActivity.class);
+        startActivity(intent);
     }
 }

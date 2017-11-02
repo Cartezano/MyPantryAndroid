@@ -34,6 +34,10 @@
                 android:id="@+id/menu_feedback"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_feedback" />
+            <item
+                android:id="@+id/menu_logout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_logout" />
         </menu>
     </item>
 </menu>

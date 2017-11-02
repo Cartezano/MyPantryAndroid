@@ -11,10 +11,10 @@
     <string name="input_name">Name</string>
     <string name="input_last_name">Last Name</string>
     <string name="input_password">Password</string>
-    <string name="input_repeat_password">Repeat Password</string>
+    <string name="input_confirm_password">Confirm Password</string>
     <string name="check_remember_me">Remember me?</string>
     <string name="action_login">Login</string>
-    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign in</string>
 
 
     <!-- Strings related to menu -->
@@ -27,6 +27,7 @@
     <string name="other_options">Other Options</string>
     <string name="menu_share">Share</string>
     <string name="menu_feedback">Feedback</string>
+    <string name="menu_logout">Log Out</string>
 
 
     <!-- Strings related to add or remove product -->
@@ -46,6 +47,10 @@
     <string name="hello_blank_fragment">Hello world</string>
 
     <!-- Strings related to error message -->
+    <string name="error_name_valid">Name is not valid, please try again.</string>
+    <string name="error_last_name_valid">Last name is not valid, please try again.</string>
     <string name="error_email_valid">Email is not valid, please try again.</string>
     <string name="error_password_valid">Password is not valid, 6 characters or more, please try again.</string>
+    <string name="error_confirm_password_valid">Confirm password is not valid, 6 characters or more, please try again.</string>
+    <string name="error_password_equals">Password and confirm password is not equals, please try again.</string>
 </resources>

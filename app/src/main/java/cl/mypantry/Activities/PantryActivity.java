@@ -1,5 +1,6 @@
 package cl.mypantry.Activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -39,7 +40,7 @@ public class PantryActivity extends AppCompatActivity {
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.menu_home:
                         fragment = new HomeFragment();
                         fragmentTransaction = true;
@@ -60,9 +61,12 @@ public class PantryActivity extends AppCompatActivity {
                         fragment = new CartFragment();
                         fragmentTransaction = true;
                         break;
+                    case R.id.menu_logout:
+                        logOut();
+                        break;
                 }
 
-                if(fragmentTransaction){
+                if (fragmentTransaction) {
                     changeFragment(fragment, item);
                     drawerLayout.closeDrawers();
                 }
@@ -81,7 +85,7 @@ public class PantryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setFragmentByDefault(){
+    private void setFragmentByDefault() {
         changeFragment(new HomeFragment(), navigationView.getMenu().getItem(0));
     }
 
@@ -94,9 +98,15 @@ public class PantryActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(item.getTitle());
     }
 
+    private void logOut() {
+        Intent intent = new Intent(PantryActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
