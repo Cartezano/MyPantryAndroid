@@ -46,10 +46,10 @@
                         android:id="@+id/product_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
                         android:layout_alignParentBottom="true"
-                        android:hint="@string/input_product_name" />
+                        android:hint="@string/input_product_name"
+                        android:inputType="textPersonName"
+                        android:maxLines="1" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -92,11 +92,11 @@
                         style="@android:style/Widget.DatePicker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/quantity"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -122,11 +122,11 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:textColor="@color/colorIcons"
-                    android:layout_marginTop="16dp"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorAccent"
                     android:text="@string/action_add_product"
+                    android:textColor="@color/colorIcons"
                     android:textStyle="bold" />
 
             </LinearLayout>

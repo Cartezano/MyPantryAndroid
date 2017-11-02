@@ -7,14 +7,14 @@
 
 
     <!-- Strings related to login and register -->
-    <string name="prompt_email">Correo Electrónico</string>
-    <string name="prompt_name">Nombre</string>
-    <string name="prompt_last_name">Apellido</string>
-    <string name="prompt_password">Contraseña</string>
-    <string name="prompt_repeat_password">Repetir Contraseña</string>
+    <string name="input_email">Correo Electrónico</string>
+    <string name="input_name">Nombre</string>
+    <string name="input_last_name">Apellido</string>
+    <string name="input_password">Contraseña</string>
+    <string name="input_confirm_password">Confirmar Contraseña</string>
     <string name="check_remember_me">¿Recordar?</string>
     <string name="action_login">Iniciar Sesión</string>
-    <string name="action_sign_in">Registrarse</string>
+    <string name="action_sign_up">Registrarse</string>
 
 
     <!-- Strings related to menu -->
@@ -27,6 +27,7 @@
     <string name="other_options">Otras Opciones</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_feedback">Feedback</string>
+    <string name="menu_logout">Salir</string>
 
 
     <!-- Strings related to product -->
@@ -43,4 +44,12 @@
     <string name="scan_close">La camara ha sido cerrada.</string>
 
     <string name="hello_blank_fragment">Hello world</string>
+
+    <!-- Strings related to error message -->
+    <string name="error_name_valid">El nombre no es valido, por favor vuelve a intentarlo.</string>
+    <string name="error_last_name_valid">El apellido no es valido, por favor vuelve a intentarlo.</string>
+    <string name="error_email_valid">El correo no es valido, por favor vuelve a intentarlo.</string>
+    <string name="error_password_valid">La contraseña no es valida, 6 caracteres o más, por favor vuelve a intentarlo.</string>
+    <string name="error_confirm_password_valid">Confirmar contraseña no es valido, 6 caracteres o más, por favor vuelve a intentarlo.</string>
+    <string name="error_password_equals">No coincide la contraseña, por favor vuelve a intentarlo.</string>
 </resources>
