@@ -1,6 +1,8 @@
 package cl.mypantry.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,17 +13,19 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import cl.mypantry.Fragments.AddProductFragment;
+import cl.mypantry.Fragments.BarcodeScanFragment;
 import cl.mypantry.Fragments.CartFragment;
 import cl.mypantry.Fragments.HomeFragment;
 import cl.mypantry.Fragments.PantryFragment;
-import cl.mypantry.Fragments.RemoveProductFragment;
+import cl.mypantry.Libraries.UtilAndroid;
+import cl.mypantry.Libraries.UtilPreference;
 import cl.mypantry.R;
 
 public class PantryActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class PantryActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
+                Bundle bundle = new Bundle();
 
                 switch (item.getItemId()) {
                     case R.id.menu_home:
@@ -50,11 +55,15 @@ public class PantryActivity extends AppCompatActivity {
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_add_product:
-                        fragment = new AddProductFragment();
+                        fragment = new BarcodeScanFragment();
+                        bundle.putBoolean("option", true);
+                        fragment.setArguments(bundle);
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_remove_product:
-                        fragment = new RemoveProductFragment();
+                        fragment = new BarcodeScanFragment();
+                        bundle.putBoolean("option", false);
+                        fragment.setArguments(bundle);
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_cart:
@@ -99,9 +108,13 @@ public class PantryActivity extends AppCompatActivity {
     }
 
     private void logOut() {
-        Intent intent = new Intent(PantryActivity.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        preferences = getSharedPreferences("MyPantry", Context.MODE_PRIVATE);
+        UtilPreference.removeActivePreferences(preferences);
+
+        Intent intent = UtilAndroid.redirect(PantryActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
+
     }
 
     @Override

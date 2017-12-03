@@ -1,6 +1,5 @@
 package cl.mypantry.Activities;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,15 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cl.mypantry.API.API;
+import cl.mypantry.API.ApiService.UserService;
+import cl.mypantry.Libraries.UtilAndroid;
+import cl.mypantry.Models.User;
 import cl.mypantry.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-/**
- * A login screen that offers login via email/password.
- */
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonSignIn;
     private EditText editTextName, editTextLastName, editTextEmail, editTextPassword, editTextConfirmPassword;
+
+    private UserService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Bind input.
         bindLayout();
+
+        service = API.setApi().create(UserService.class);
 
         // Set up the signin form.
         buttonSignIn.setOnClickListener(this);
@@ -44,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String confirmPassword = editTextConfirmPassword.getText().toString();
 
         if(register(name, lastName, email, password, confirmPassword)){
-            goToLogin();
+            createUser(name, lastName, email, password, 1);
         }
     }
 
@@ -72,6 +80,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    public void createUser(String name, String lastName, String email, String password, int userType) {
+        User user = new User(name, lastName, email, password, userType);
+        service.createUser(user).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful() && response.code() == 201){
+                    Toast.makeText(RegisterActivity.this, getString(R.string.valid_register), Toast.LENGTH_LONG).show();
+                    Intent intent = UtilAndroid.redirect(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(RegisterActivity.this, getString(R.string.invalid_register), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, getString(R.string.error_register), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     private boolean isValidName(String name) {
         return name.length() >= 2;
     }
@@ -94,12 +124,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else {
             return false;
         }
-    }
-
-    private void goToLogin() {
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
     }
 
     private void bindLayout() {

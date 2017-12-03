@@ -13,8 +13,15 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import cl.mypantry.API.API;
+import cl.mypantry.API.ApiResponse.UserModelResponse;
+import cl.mypantry.API.ApiService.UserService;
+import cl.mypantry.Libraries.UtilAndroid;
 import cl.mypantry.R;
 import cl.mypantry.Libraries.UtilPreference;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin;
     private EditText editTextEmail, editTextPassword;
     private Switch switchRemember;
+    private UserService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // Bind input.
         bindLayout();
+
+        service = API.setApi().create(UserService.class);
 
         // Enabled share preferences
         preferences = getSharedPreferences("MyPantry", Context.MODE_PRIVATE);
@@ -50,8 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = editTextPassword.getText().toString();
 
         if (login(email, password)) {
-            goToPantry();
-            UtilPreference.setSharedPreferences(preferences, switchRemember, email, password);
+            loginUser(email, password);
         }
     }
 
@@ -67,18 +76,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void loginUser(String email, String password) {
+        service.loginUser(email, password).enqueue(new Callback<UserModelResponse>() {
+            @Override
+            public void onResponse(Call<UserModelResponse> call, Response<UserModelResponse> response) {
+                if(response.isSuccessful() && response.code() == 200){
+                    Toast.makeText(LoginActivity.this, getString(R.string.valid_login), Toast.LENGTH_LONG).show();
+                    Intent intent = UtilAndroid.redirect(LoginActivity.this, PantryActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                    UtilPreference.setSharedPreferences(preferences, switchRemember, response.body().getUser().getId(), response.body().getUser().getEmail(), true);
+                } else {
+                    Toast.makeText(LoginActivity.this, getString(R.string.invalid_login), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModelResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, getString(R.string.error_login), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     private boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private boolean isValidPassword(String password) {
-        return password.length() >= 6;
-    }
-
-    private void goToPantry() {
-        Intent intent = new Intent(LoginActivity.this, PantryActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        return !TextUtils.isEmpty(password) && password.length() >= 6;
     }
 
     private void bindLayout() {

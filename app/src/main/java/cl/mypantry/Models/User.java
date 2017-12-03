@@ -1,23 +1,50 @@
 package cl.mypantry.Models;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class User {
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("last_name")
     private String last_name;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("password")
     private String password;
+
+    @SerializedName("user_type_id")
+    private int user_type_id;
 
     public User() {
 
     }
 
-    public User(int id, String name, String last_name, String email, String password) {
+    public User(int id, String name, String last_name, String email, String password, int user_type_id) {
         this.id = id;
         this.name = name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
+        this.user_type_id = user_type_id;
+    }
+
+    public User(String name, String last_name, String email, String password, int user_type_id) {
+        this.name = name;
+        this.last_name = last_name;
+        this.email = email;
+        this.password = password;
+        this.user_type_id = user_type_id;
     }
 
     public int getId() {
@@ -58,5 +85,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserType() {
+        return user_type_id;
+    }
+
+    public void setUserType(int user_type_id) {
+        this.user_type_id = user_type_id;
     }
 }
