@@ -6,9 +6,12 @@ import cl.mypantry.API.ApiResponse.PantryListResponse;
 import cl.mypantry.API.ApiResponse.PantryModelResponse;
 import cl.mypantry.Models.Pantry;
 
+import cl.mypantry.Models.User;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface PantryService {
@@ -18,12 +21,9 @@ public interface PantryService {
     @GET("pantries")
     Call<PantryListResponse> getPantries();
 
-    @GET("pantries/products/{product}/users/{user}/count")
-    Call<PantryModelResponse> count(
-            @Path("product") int product_id,
-            @Path("user") int user_id,
-            @Field("expiration_date") Date expiration_date,
-            @Field("quality") int quality
+    @POST("pantries")
+    Call<Pantry> createPantry(
+            @Body Pantry pantry
     );
 
     @GET("pantries/products/{product}/users/{user}/discount")

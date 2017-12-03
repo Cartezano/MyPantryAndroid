@@ -6,10 +6,14 @@ public class UserType {
     private String name;
 
     public UserType(){
-
+        this(null, 0);
     }
 
-    public UserType(int id, String name){
+    public UserType(String name){
+        this(name, 0);
+    }
+
+    public UserType(String name, int id){
         this.id = id;
         this.name = name;
     }
