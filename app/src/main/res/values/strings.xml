@@ -34,11 +34,14 @@
     <string name="input_code">Code</string>
     <string name="input_product_name">Product Name</string>
     <string name="input_brand">Brand</string>
-    <string name="input_quality">Quality</string>
     <string name="input_dear_date">Dear Date</string>
-    <string name="input_expiration_date">Expiration Date</string>
     <string name="action_add_product">Add Product</string>
 
+    <!-- Strings related to add or remove pantry -->
+    <string name="input_quality">Quality</string>
+    <string name="input_expiration_date">Expiration Date</string>
+    <string name="action_add_pantry">Add to my pantry</string>
+    <string name="action_remove_pantry">Remove to my pantry</string>
 
     <!-- String related to scan camera -->
     <string name="scan_message">Por favor, acerqué el código de barra.</string>
@@ -53,4 +56,12 @@
     <string name="error_password_valid">Password is not valid, 6 characters or more, please try again.</string>
     <string name="error_confirm_password_valid">Confirm password is not valid, 6 characters or more, please try again.</string>
     <string name="error_password_equals">Password and confirm password is not equals, please try again.</string>
+    <string name="error_register">There was an error when registering.</string>
+    <string name="error_login">There was an error when registering.</string>
+    <string name="invalid_register">You\'re already signed in!</string>
+    <string name="invalid_login">The email or password is incorrect.</string>
+
+    <!-- String related to success message -->
+    <string name="valid_register">You have successfully register!</string>
+    <string name="valid_login">You have successfully logged in!</string>
 </resources>

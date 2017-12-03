@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import cl.mypantry.Libraries.UtilAndroid;
 import cl.mypantry.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,16 +25,18 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(login);
+                Intent intent = UtilAndroid.redirect(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent signin = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(signin);
+                Intent intent = UtilAndroid.redirect(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cl.mypantry.Fragments.RemoveProductFragment">
+    tools:context="cl.mypantry.Fragments.BarcodeScanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/btnScan"
         android:layout_width="wrap_content"

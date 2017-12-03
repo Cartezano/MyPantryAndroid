@@ -6,11 +6,13 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import cl.mypantry.Libraries.UtilAndroid;
 import cl.mypantry.Libraries.UtilPreference;
 
 public class SplashActivity extends AppCompatActivity {
 
     private SharedPreferences preferences;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +20,12 @@ public class SplashActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("MyPantry", Context.MODE_PRIVATE);
 
-        Intent intentMain = new Intent(SplashActivity.this, MainActivity.class);
-        Intent intentPantry = new Intent(SplashActivity.this, PantryActivity.class);
-
-        if (UtilPreference.getPreferenceEmail(preferences) != null) {
-            startActivity(intentPantry);
+        if (UtilPreference.getPreferenceEmail(preferences) != null && UtilPreference.getPreferenceActive(preferences)) {
+            intent = UtilAndroid.redirect(SplashActivity.this, MainActivity.class);
         } else {
-            startActivity(intentMain);
+            intent = UtilAndroid.redirect(SplashActivity.this, PantryActivity.class);
         }
+        startActivity(intent);
         finish();
     }
 }

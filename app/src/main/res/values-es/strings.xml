@@ -52,4 +52,12 @@
     <string name="error_password_valid">La contraseña no es valida, 6 caracteres o más, por favor vuelve a intentarlo.</string>
     <string name="error_confirm_password_valid">Confirmar contraseña no es valido, 6 caracteres o más, por favor vuelve a intentarlo.</string>
     <string name="error_password_equals">No coincide la contraseña, por favor vuelve a intentarlo.</string>
+    <string name="error_register">Hubo un error al registrarse.</string>
+    <string name="error_login">Hubo un error al iniciar sesión.</string>
+    <string name="invalid_register">¡Usted ya esta registrado!</string>
+    <string name="invalid_login">El correo electronico o la contraseña son incorrectos.</string>
+
+    <!-- String related to success message -->
+    <string name="valid_register">¡Te has registrado con éxito!</string>
+    <string name="valid_login">¡Has iniciado sesión con éxito!</string>
 </resources>
