@@ -8,6 +8,22 @@ public class PantryProduct {
     private int quality;
     private Date expiration_date;
 
+    public PantryProduct() {
+        this(null, null, 0, new Date(0000, 00, 00));
+    }
+
+    public PantryProduct(String name) {
+        this(name, null, 0, new Date(0000, 00, 00));
+    }
+
+    public PantryProduct(String name, String brand) {
+        this(name, brand, 0, new Date(0000, 00, 00));
+    }
+
+    public PantryProduct(String name, String brand, int quality) {
+        this(name, brand, quality, new Date(0000, 00, 00));
+    }
+
     public PantryProduct(String name, String brand, int quality, Date expiration_date) {
         this.name = name;
         this.brand = brand;

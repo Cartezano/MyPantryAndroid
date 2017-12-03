@@ -6,10 +6,14 @@ public class Category {
     private String name;
 
     public Category() {
-
+        this(null, 0);
     }
 
-    public Category(int id, String name){
+    public Category(String name){
+        this(null, 0);
+    }
+
+    public Category(String name, int id){
         this.id = id;
         this.name = name;
     }

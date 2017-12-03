@@ -87,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful() && response.code() == 201){
                     Toast.makeText(RegisterActivity.this, getString(R.string.valid_register), Toast.LENGTH_LONG).show();
+
                     Intent intent = UtilAndroid.redirect(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();

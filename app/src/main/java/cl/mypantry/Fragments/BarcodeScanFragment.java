@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,28 +92,27 @@ public class BarcodeScanFragment extends Fragment {
                         Toast.makeText(activity, "El producto existe en su despensa.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, PantryActivity.class);
                     }
+                    intent.putExtra("product_id", product.getId());
                 }
                 if (response.code() == 404) {
+                    Product product = response.body().getProduct();
                     if (option) {
                         Toast.makeText(activity, "Se crea el producto porque no existe.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, AddProductActivity.class);
-                        Log.d("Error", "Pase por " + option);
+                        intent.putExtra("product_id", product.getId());
                     } else {
                         Toast.makeText(activity, "No se encuentra producto.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, PantryActivity.class);
-                        Log.d("Error", "Pase por " + option);
                     }
                 }
 
                 activity.startActivity(intent);
                 activity.finish();
-
-                Log.d("Error", "Error: " + response.code());
             }
 
             @Override
             public void onFailure(Call<ProductModelResponse> call, Throwable t) {
-                Log.d("Error", "Error: " + t.getMessage().toString());
+
             }
         });
     }

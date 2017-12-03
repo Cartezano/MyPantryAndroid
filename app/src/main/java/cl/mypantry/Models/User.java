@@ -8,43 +8,44 @@ import java.util.List;
 
 public class User {
 
-    @SerializedName("id")
     private int id;
-
-    @SerializedName("name")
     private String name;
-
-    @SerializedName("last_name")
     private String last_name;
-
-    @SerializedName("email")
     private String email;
-
-    @SerializedName("password")
     private String password;
-
-    @SerializedName("user_type_id")
     private int user_type_id;
 
     public User() {
-
+        this(null, null, null, null, 0, 0);
     }
 
-    public User(int id, String name, String last_name, String email, String password, int user_type_id) {
-        this.id = id;
-        this.name = name;
-        this.last_name = last_name;
-        this.email = email;
-        this.password = password;
-        this.user_type_id = user_type_id;
+    public User(String name) {
+        this(name, null, null, null, 0, 0);
+    }
+
+    public User(String name, String last_name) {
+        this(name, last_name, null, null, 0, 0);
+    }
+
+    public User(String name, String last_name, String email) {
+        this(name, last_name, email, null, 0, 0);
+    }
+
+    public User(String name, String last_name, String email, String password) {
+        this(name, last_name, email, password, 0, 0);
     }
 
     public User(String name, String last_name, String email, String password, int user_type_id) {
+        this(name, last_name, email, password, user_type_id, 0);
+    }
+
+    public User(String name, String last_name, String email, String password, int user_type_id, int id) {
         this.name = name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
         this.user_type_id = user_type_id;
+        this.id = id;
     }
 
     public int getId() {
