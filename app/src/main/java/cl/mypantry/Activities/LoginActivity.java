@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -86,6 +87,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
 
+                    Log.d("Variable", "Variable user_id " + response.body().getUser().getId());
+                    Log.d("Variable", "Variable user_id " + response.body().getUser().getEmail());
                     UtilPreference.setSharedPreferences(preferences, switchRemember, response.body().getUser().getId(), response.body().getUser().getEmail(), true);
                 } else {
                     Toast.makeText(LoginActivity.this, getString(R.string.invalid_login), Toast.LENGTH_LONG).show();

@@ -69,7 +69,6 @@ public class PantryFragment extends Fragment {
     }
 
     public void pantryList(final View view) {
-        Log.d("Success", "Consulta: " + UtilPreference.getPreferenceId(preferences));
         userService.getProducts(UtilPreference.getPreferenceId(preferences)).enqueue(new Callback<PantryListResponse>() {
             @Override
             public void onResponse(Call<PantryListResponse> call, Response<PantryListResponse> response) {
@@ -79,14 +78,12 @@ public class PantryFragment extends Fragment {
                         Log.d("Success", "ID del Producto: " + pantry.getProductId());
                         productList(pantry, view);
                     }
-                } else {
-                    Log.d("Error", "Mensaje: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<PantryListResponse> call, Throwable t) {
-                Log.d("Error", "Mensaje: " + t.getMessage().toString());
+
             }
         });
     }
@@ -98,21 +95,17 @@ public class PantryFragment extends Fragment {
                 if(response.isSuccessful() && response.code() == 200){
                     Product product = response.body().getProduct();
 
-                    Log.d("Success", "ID del Producto: " + product.getId());
-
                     PantryProduct pantryProduct = new PantryProduct(product.getName(), product.getBrand(), pantry.getQuality(), pantry.getExpirationDate());
                     pantryProductList.add(pantryProduct);
 
 
                     setList(view, pantryProductList);
-                } else {
-                    Log.d("Error", "Mensaje: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<ProductModelResponse> call, Throwable t) {
-                Log.d("Error", "Mensaje: " + t.getMessage().toString());
+
             }
         });
     }

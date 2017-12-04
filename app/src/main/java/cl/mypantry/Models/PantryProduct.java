@@ -1,30 +1,28 @@
 package cl.mypantry.Models;
 
-import java.util.Date;
-
 public class PantryProduct {
     private String name;
     private String brand;
     private int quality;
-    private Date expiration_date;
+    private String expiration_date;
 
     public PantryProduct() {
-        this(null, null, 0, new Date(0000, 00, 00));
+        this(null, null, 0, "0000-00-00");
     }
 
     public PantryProduct(String name) {
-        this(name, null, 0, new Date(0000, 00, 00));
+        this(name, null, 0, "0000-00-00");
     }
 
     public PantryProduct(String name, String brand) {
-        this(name, brand, 0, new Date(0000, 00, 00));
+        this(name, brand, 0, "0000-00-00");
     }
 
     public PantryProduct(String name, String brand, int quality) {
-        this(name, brand, quality, new Date(0000, 00, 00));
+        this(name, brand, quality, "0000-00-00");
     }
 
-    public PantryProduct(String name, String brand, int quality, Date expiration_date) {
+    public PantryProduct(String name, String brand, int quality, String expiration_date) {
         this.name = name;
         this.brand = brand;
         this.quality = quality;
@@ -55,11 +53,11 @@ public class PantryProduct {
         this.quality = quality;
     }
 
-    public Date getExpirationDate() {
+    public String getExpirationDate() {
         return expiration_date;
     }
 
-    public void setExpirationDate(Date expiration_date) {
+    public void setExpirationDate(String expiration_date) {
         this.expiration_date = expiration_date;
     }
 }
