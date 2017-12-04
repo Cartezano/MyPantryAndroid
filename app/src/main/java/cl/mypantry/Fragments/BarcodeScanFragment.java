@@ -79,7 +79,7 @@ public class BarcodeScanFragment extends Fragment {
         }
     }
 
-    public void checkProduct(BigInteger barcode, final Activity activity, final boolean option) {
+    public void checkProduct(final BigInteger barcode, final Activity activity, final boolean option) {
         service.checkProduct(barcode).enqueue(new Callback<ProductModelResponse>() {
             @Override
             public void onResponse(Call<ProductModelResponse> call, Response<ProductModelResponse> response) {
@@ -92,16 +92,15 @@ public class BarcodeScanFragment extends Fragment {
                         Toast.makeText(activity, "El producto existe en su despensa.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, PantryActivity.class);
                     }
+                    System.out.println(product.getId());
                     intent.putExtra("product_id", product.getId());
                 }
                 if (response.code() == 404) {
-                    Product product = response.body().getProduct();
                     if (option) {
                         Toast.makeText(activity, "Se crea el producto porque no existe.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, AddProductActivity.class);
-                        intent.putExtra("product_id", product.getId());
+                        intent.putExtra("code", barcode);
                     } else {
-                        Toast.makeText(activity, "No se encuentra producto.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, PantryActivity.class);
                     }
                 }

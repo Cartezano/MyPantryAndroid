@@ -21,9 +21,9 @@ public class SplashActivity extends AppCompatActivity {
         preferences = getSharedPreferences("MyPantry", Context.MODE_PRIVATE);
 
         if (UtilPreference.getPreferenceEmail(preferences) != null && UtilPreference.getPreferenceActive(preferences)) {
-            intent = UtilAndroid.redirect(SplashActivity.this, MainActivity.class);
-        } else {
             intent = UtilAndroid.redirect(SplashActivity.this, PantryActivity.class);
+        } else {
+            intent = UtilAndroid.redirect(SplashActivity.this, MainActivity.class);
         }
         startActivity(intent);
         finish();

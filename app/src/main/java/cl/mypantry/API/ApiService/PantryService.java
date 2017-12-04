@@ -21,16 +21,13 @@ public interface PantryService {
     @GET("pantries")
     Call<PantryListResponse> getPantries();
 
-    @POST("pantries")
-    Call<Pantry> createPantry(
+    @POST("pantries/count")
+    Call<Pantry> addProduct(
             @Body Pantry pantry
     );
 
-    @GET("pantries/products/{product}/users/{user}/discount")
-    Call<PantryModelResponse> discount(
-            @Path("product") int product_id,
-            @Path("user") int user_id,
-            @Field("expiration_date") Date expiration_date,
-            @Field("quality") int quality
+    @POST("pantries/discount")
+    Call<Pantry> removeProduct(
+            @Body Pantry pantry
     );
 }
