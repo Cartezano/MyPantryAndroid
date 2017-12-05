@@ -23,6 +23,7 @@ import cl.mypantry.API.ApiService.ProductService;
 import cl.mypantry.Activities.AddPantryActivity;
 import cl.mypantry.Activities.AddProductActivity;
 import cl.mypantry.Activities.PantryActivity;
+import cl.mypantry.Activities.RemovePantryActivity;
 import cl.mypantry.Libraries.UtilAndroid;
 import cl.mypantry.Models.Product;
 import cl.mypantry.R;
@@ -90,7 +91,7 @@ public class BarcodeScanFragment extends Fragment {
                         intent = UtilAndroid.redirect(activity, AddPantryActivity.class);
                     } else {
                         Toast.makeText(activity, "El producto existe en su despensa.", Toast.LENGTH_LONG).show();
-                        intent = UtilAndroid.redirect(activity, PantryActivity.class);
+                        intent = UtilAndroid.redirect(activity, RemovePantryActivity.class);
                     }
                     System.out.println(product.getId());
                     intent.putExtra("product_id", product.getId());
@@ -99,7 +100,7 @@ public class BarcodeScanFragment extends Fragment {
                     if (option) {
                         Toast.makeText(activity, "Se crea el producto porque no existe.", Toast.LENGTH_LONG).show();
                         intent = UtilAndroid.redirect(activity, AddProductActivity.class);
-                        intent.putExtra("code", barcode);
+                        intent.putExtra("barcode", barcode.toString());
                     } else {
                         intent = UtilAndroid.redirect(activity, PantryActivity.class);
                     }

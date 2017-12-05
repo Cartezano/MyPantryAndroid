@@ -32,7 +32,7 @@
         <activity android:name=".Activities.MainActivity" />
         <activity
             android:name=".Activities.LoginActivity"
-            android:label="@string/title_activity_login"
+            android:label="@string/title_login_activity"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,7 +40,7 @@
         </activity>
         <activity
             android:name=".Activities.RegisterActivity"
-            android:label="@string/title_activity_register"
+            android:label="@string/title_register_activity"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,14 +48,36 @@
         </activity>
         <activity
             android:name=".Activities.PantryActivity"
-            android:label="@string/title_activity_pantry"
+            android:label="@string/title_pantry_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
-        <activity android:name=".Activities.AddProductActivity" />
-        <activity android:name=".Activities.AddPantryActivity"></activity>
+        <activity
+            android:name=".Activities.AddProductActivity"
+            android:label="@string/title_add_product_activity"
+            android:parentActivityName=".Activities.PantryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.PantryActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.AddPantryActivity"
+            android:label="@string/title_add_pantry_activity"
+            android:parentActivityName=".Activities.PantryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.PantryActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.RemovePantryActivity"
+            android:label="@string/title_remove_pantry_activity"
+            android:parentActivityName=".Activities.PantryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.PantryActivity" />
+        </activity>
     </application>
 
 </manifest>

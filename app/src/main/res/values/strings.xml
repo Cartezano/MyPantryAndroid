@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">My Pantry</string>
-    <string name="title_activity_pantry">My Pantry</string>
-    <string name="title_activity_login">Login</string>
-    <string name="title_activity_register">Sign in</string>
-    <string name="title_activity_add_product">Add Product</string>
+    <string name="title_pantry_activity">My Pantry</string>
+    <string name="title_login_activity">Login</string>
+    <string name="title_register_activity">Sign in</string>
+    <string name="title_add_product_activity">Add Product to my Pantry</string>
+    <string name="title_add_pantry_activity">Add Product to my Pantry</string>
+    <string name="title_remove_pantry_activity">Remove Product to my Pantry</string>
 
 
     <!-- Strings related to login and register -->

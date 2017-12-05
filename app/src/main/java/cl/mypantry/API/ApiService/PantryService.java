@@ -15,19 +15,24 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface PantryService {
-    @GET("pantries/{pantry}")
-    Call<Pantry> getPantry(@Path("pantry") String pantry);
-
     @GET("pantries")
     Call<PantryListResponse> getPantries();
 
+    @POST("pantries")
+    Call<PantryModelResponse> createPantry(
+            @Body Pantry product
+    );
+
+    @GET("pantries/{pantry}")
+    Call<PantryModelResponse> getPantry(@Path("pantry") String pantry);
+
     @POST("pantries/count")
-    Call<Pantry> addProduct(
+    Call<PantryModelResponse> addProduct(
             @Body Pantry pantry
     );
 
     @POST("pantries/discount")
-    Call<Pantry> removeProduct(
+    Call<PantryModelResponse> removeProduct(
             @Body Pantry pantry
     );
 }
