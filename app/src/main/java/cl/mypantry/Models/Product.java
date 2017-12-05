@@ -9,7 +9,7 @@ public class Product {
     private BigInteger code;
     private String name;
     private String brand;
-    private int dear_date;
+    private long dear_date;
     private int category_id;
 
 
@@ -29,15 +29,15 @@ public class Product {
         this(code, name, brand, 0, 0 ,0);
     }
 
-    public Product(BigInteger code, String name, String brand, int dear_date) {
+    public Product(BigInteger code, String name, String brand, long dear_date) {
         this(code, name, brand, dear_date, 0 ,0);
     }
 
-    public Product(BigInteger code, String name, String brand, int dear_date, int category_id) {
+    public Product(BigInteger code, String name, String brand, long dear_date, int category_id) {
         this(code, name, brand, dear_date, category_id ,0);
     }
 
-    public Product(BigInteger code, String name, String brand, int dear_date, int category_id, int id) {
+    public Product(BigInteger code, String name, String brand, long dear_date, int category_id, int id) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -78,11 +78,11 @@ public class Product {
         this.brand = brand;
     }
 
-    public int getDearDate() {
+    public long getDearDate() {
         return dear_date;
     }
 
-    public void setDearDate(int dear_date) {
+    public void setDearDate(long dear_date) {
         this.dear_date = dear_date;
     }
 

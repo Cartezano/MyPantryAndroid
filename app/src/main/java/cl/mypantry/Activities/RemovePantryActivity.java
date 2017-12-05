@@ -26,19 +26,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddPantryActivity extends AppCompatActivity implements View.OnClickListener {
+public class RemovePantryActivity extends AppCompatActivity implements View.OnClickListener {
     private SharedPreferences preferences;
 
     private EditText editTextQuality;
     private DatePicker editTextExpirationDate;
     private PantryService service;
     private int intProductId;
-    private Button buttonAddPantry;
+    private Button buttonRemovePantry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_pantry);
+        setContentView(R.layout.activity_remove_pantry);
 
         // Enabled go back
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,7 +51,7 @@ public class AddPantryActivity extends AppCompatActivity implements View.OnClick
         service = API.setApi().create(PantryService.class);
 
         // Set up the login form.
-        buttonAddPantry.setOnClickListener(this);
+        buttonRemovePantry.setOnClickListener(this);
     }
 
     @Override
@@ -65,30 +65,27 @@ public class AddPantryActivity extends AppCompatActivity implements View.OnClick
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String expiration_date = dateFormat.format(calendar.getTime());
 
-        createPantry(user_id, product_id, quality, expiration_date);
-
+        removePantry(user_id, product_id, quality, expiration_date);
     }
 
-    public void createPantry(int user_id, int product_id, int quality, String expiration_date) {
+    public void removePantry(int user_id, int product_id, int quality, String expiration_date) {
         Pantry pantry = new Pantry(user_id, product_id, quality, expiration_date);
 
-        service.addProduct(pantry).enqueue(new Callback<PantryModelResponse>() {
+        service.removeProduct(pantry).enqueue(new Callback<PantryModelResponse>() {
             @Override
             public void onResponse(Call<PantryModelResponse> call, Response<PantryModelResponse> response) {
-                if(response.isSuccessful() && response.code() == 200){
-                    Toast.makeText(AddPantryActivity.this, "Se ha sumado a los que ya tenia.", Toast.LENGTH_SHORT).show();
+                if(response.isSuccessful() && response.code() == 201){
+                    Toast.makeText(RemovePantryActivity.this, "Se ha restado a los que ya tenia.", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = UtilAndroid.redirect(RemovePantryActivity.this, PantryActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
-                if (response.isSuccessful() && response.code() == 201) {
-                    Toast.makeText(AddPantryActivity.this, "Se ha agregado a su despensa.", Toast.LENGTH_SHORT).show();
-                }
-                Intent intent = UtilAndroid.redirect(AddPantryActivity.this, PantryActivity.class);
-                startActivity(intent);
-                finish();
             }
 
             @Override
             public void onFailure(Call<PantryModelResponse> call, Throwable t) {
-                Toast.makeText(AddPantryActivity.this, getString(R.string.error_register), Toast.LENGTH_LONG).show();
+                Toast.makeText(RemovePantryActivity.this, getString(R.string.error_register), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -97,6 +94,6 @@ public class AddPantryActivity extends AppCompatActivity implements View.OnClick
         intProductId = getIntent().getIntExtra("product_id", intProductId);
         editTextQuality = (EditText) findViewById(R.id.quantity);
         editTextExpirationDate = (DatePicker) findViewById(R.id.expiration_date);
-        buttonAddPantry = (Button) findViewById(R.id.add_pantry_button);
+        buttonRemovePantry = (Button) findViewById(R.id.remove_pantry_button);
     }
 }

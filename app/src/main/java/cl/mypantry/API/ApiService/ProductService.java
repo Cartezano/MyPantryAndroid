@@ -14,16 +14,16 @@ import retrofit2.http.Path;
 public interface ProductService {
 
     @GET("products")
-    Call<Product> getProducts();
+    Call<ProductListResponse> getProducts();
+
+    @POST("products")
+    Call<ProductModelResponse> createProduct(
+            @Body Product product
+    );
 
     @GET("products/{product}")
     Call<ProductModelResponse> getProduct(
             @Path("product") int id
-    );
-
-    @POST("products")
-    Call<Product> createProduct(
-            @Body Product product
     );
 
     @GET("products/{product}/barcode")
